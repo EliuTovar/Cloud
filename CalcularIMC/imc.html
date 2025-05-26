@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <style>
+        #ms {
+            background-color: green;
+            border: none;
+            box-shadow: 2px 2px 20px red;
+            border-radius: 10px;
+        }
+        #msg_titulo {
+            color: silver;
+            background-color: black;
+            box-shadow: 2px 2px 20px silver;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        #msg_cuerpo {
+            text-align: justify;
+        }
+        #cerrar {
+            display: block;
+            margin: 5px auto;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            let mensaje = document.getElementById('ms');
+            let obj_btn1 = document.getElementById("show1");
+            let mes2 =document.getElementById("msg_body")
+            obj_btn1.addEventListener("click", function () {
+            let estatura =parseFloat( document.getElementById("estamt").value);
+            let peso = parseFloat( document.getElementById("pesokg").value);
+            let imc = peso / (estatura * estatura);
+            if(imc<=18.5){
+                mes2.innerText="Tu IMC es en total: " + imc + ",Indica delgadez" ;
+              }else if(imc>18.5 && imc<25){
+                mes2.innerHTML=`<p style="color: yellow;">Tu IMC es en total: ${imc.toFixed(2)},Indica un peso normal</p>`;
+              }else if(imc>=25 && imc<30){
+                mes2.textContent= `Tu IMC es en total: ${imc.toFixed(2)},Indica sobrepeso`;
+              }else if(imc>=30 && imc<40){
+                mes2.innerText=`Tu IMC es en total: ${imc.toFixed(2)},Indica obesidad`;
+              }else{
+                mes2.innerText=`Tu IMC es en total: ${imc.toFixed(2)},Indica obesidad morbida`;
+              }
+                mensaje.showModal();
+            });
+            let obj_cerrar = document.getElementById("cerrar");
+            obj_cerrar.addEventListener("click", function () {
+                mensaje.close();
+            })
+        })
+    </script>
+</head>
+<body>
+    <header>
+        <h1>IMC</h1>
+    </header>
+    <section></section>
+    <label>Inserta tu PESO en Kg</label>
+    <input type="text" name="estatura" id="pesokg"> 
+    <label>Inserta tu ESTATURA en Metros </label>
+    <input type="text" name="estatura" id="estamt"> 
+    <dialog id="ms" style="width:400px;">
+        <h2 id="msg_titulo">
+        </h2>
+        <p id="msg_body"> </p>
+        <button id="cerrar">cerrar</button>
+    </dialog>
+<button id="show1">
+    calcular
+</button>
+<footer></footer>
+</body>
+</html>
