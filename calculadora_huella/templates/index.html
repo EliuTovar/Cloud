@@ -1,0 +1,29 @@
+<form method="post">
+    <label for="kilometros">¿Cuántos km viajas por semana?</label>
+    <input type="number" name="kilometros" required>
+
+    <label for="transporte">Elige el medio de transporte:</label>
+    <select name="transporte" required>
+        <option value="auto">Auto</option>
+        <option value="avion">Avión</option>
+        <option value="autobus">Autobús</option>
+        <option value="moto">Moto</option>
+    </select>
+
+    <button type="submit">Calcular</button>
+</form>
+
+{% if huella %}
+    <p><strong>Tu huella semanal es:</strong> {{ huella }} kg de CO₂</p>
+{% endif %}
+
+{% if recomendacion %}
+    <p><strong>Recomendación:</strong> {{ recomendacion }}</p>
+{% endif %}
+
+{% if ultimo_resultado %}
+    <p><strong>Último resultado guardado:</strong> {{ ultimo_resultado }}</p>
+{% endif %}
+
+
+
